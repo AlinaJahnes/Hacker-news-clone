@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @articles = Article.all.order('created_at')
   end
 
   def show
@@ -33,6 +33,16 @@ class ArticlesController < ApplicationController
   def destroy
     Article.find_by(id: params[:id]).destroy
     redirect_to user_path(current_user)
+  end
+
+  def like_count
+    @article = Article.find_by(id: params[:id])
+    @article.increment!(:like_count)
+    if request.xhr?
+      return {like_count: @article.like_count}.to_json
+    else
+    redirect_to :root
+    end
   end
 
   private

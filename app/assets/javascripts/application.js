@@ -14,3 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(document).on('ready',function(){
+  $('#like_count').on('click',function{
+    event.preventDefault();
+    $like_count = $(event.target)
+    $.ajax({
+
+    })
+  })
+
+})
