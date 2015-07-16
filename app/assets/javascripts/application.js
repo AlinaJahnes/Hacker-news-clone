@@ -14,8 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$(document).on('ready',function(event){
-  $('.like_count').on('submit',function{
+$(document).on('ready',function(){
+  $('.like_count').on('submit',function(event){
     event.preventDefault();
     $form_data = $(event.target)
     $.ajax({
@@ -24,7 +24,7 @@ $(document).on('ready',function(event){
       data: $form_data.serialize(),
       dataType: 'json'
     }).done(function(response){
-      $('.count').html(response.number)
+      $('.count').text(response.number)
     }).fail(function(error){
       console.log(error)
     })
