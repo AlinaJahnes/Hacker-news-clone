@@ -19,7 +19,7 @@ $(document).on('ready',function(){
     event.preventDefault();
     $like_count = $(event.target)
     $.ajax({
-
+      url: '/'
     })
   })
 
