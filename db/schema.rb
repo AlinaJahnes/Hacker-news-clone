@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20150716150620) do
   create_table "articles", force: :cascade do |t|
     t.string   "title",      null: false
     t.text     "body",       null: false
+    t.integer  "like_count"
     t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

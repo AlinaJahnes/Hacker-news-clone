@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :articles do
-    resources :comments, only: :new
+    resources :comments, only: [:new, :create]
   end
 
   resources :users, except: [:new, :destroy]
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
+  get 'users/:id/comments' => 'comments#show_all', as: :show_all
 
   root 'articles#index'
   # The priority is based upon order of creation: first created -> highest priority.

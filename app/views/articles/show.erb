@@ -1,0 +1,19 @@
+<div><%= @article.title %></div>
+<div><%= @article.body %></div>
+<div>
+<% if current_user.id == @article.user_id%>
+  <%= link_to "Edit article", edit_article_path(@article)%>
+  <%= link_to "Delete", @article, method: :delete%>
+<% end %>
+</div>
+
+<div>
+  <h3>Comments for this article</h3>
+<% @article.comments.each do |comment| %>
+  <div><p><%= comment.content %></p></div>
+
+<% end %>
+</div>
+
+<%= link_to "Add a comment", new_article_comment_path(@article)%>
+

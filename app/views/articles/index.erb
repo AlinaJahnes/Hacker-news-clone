@@ -1,5 +1,7 @@
 <h2>Hacker News</h2>
 
+<ol>
 <% @articles.each do |article| %>
-  <div><%= article.title%></div>
+  <div><li><%= link_to article.title, article_path(article) %></li></div>
 <% end %>
+</ol>

@@ -1,0 +1,4 @@
+<% @comments.each do |comment| %>
+  <div>You commented on <%= comment.article.title%></div>
+  <div>You said <%= comment.content %></div>
+<% end %>
