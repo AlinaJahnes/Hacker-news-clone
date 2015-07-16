@@ -14,13 +14,19 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$(document).on('ready',function(){
-  $('#like_count').on('click',function{
+$(document).on('ready',function(event){
+  $('.like_count').on('submit',function{
     event.preventDefault();
-    $like_count = $(event.target)
+    $form_data = $(event.target)
     $.ajax({
-      url: '/'
+      url: $form_data.attr('action'),
+      method: 'post',
+      data: $form_data.serialize(),
+      dataType: 'json'
+    }).done(function(response){
+      $('.count').html(response.number)
+    }).fail(function(error){
+      console.log(error)
     })
   })
-
 })
