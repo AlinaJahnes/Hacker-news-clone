@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
     @article.increment!(:like_count)
     @count = @article.like_count
     if request.xhr?
-      render json: {number: @count}.to_json
+      render json: {number: @count, id: @article.id.to_s }.to_json
     else
     redirect_to :root
     end

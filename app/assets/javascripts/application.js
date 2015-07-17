@@ -15,16 +15,22 @@
 //= require turbolinks
 //= require_tree .
 $(document).on('ready',function(){
+	var $divID
   $('.like_count').on('submit',function(event){
     event.preventDefault();
-    $form_data = $(event.target)
+    $form_data = $(event.target);
+		// $divID = $(this).attr("id");
+		console.log($(this).children());
     $.ajax({
       url: $form_data.attr('action'),
       method: 'post',
       data: $form_data.serialize(),
       dataType: 'json'
     }).done(function(response){
-      $('.count').text(response.number)
+			console.log("bingo");
+			console.log(response.number);
+			console.log("#count" + $divID);
+      $("#count" + response.id).text("Votes: " + response.number);
     }).fail(function(error){
       console.log(error)
     })

@@ -3,8 +3,9 @@
 <ol>
 <% @articles.each do |article| %>
   <div><li><%= button_to "▲", like_count_path(article), form_class: "like_count", method: :post %>
-    <span class="count"<%= article.id%>>votes: <%= article.like_count %></span>
-    <%= link_to article.title, article_path(article) %>  written by <%= article.user.username%></li></div>
+    <span id="count<%= article.id%>">votes: <%= article.like_count %></span>
+		<%= link_to article.title, article_path(article) %><div>  written by <%= article.user.username%><br><%= article.comments.count%>
+	Comments</div></li></div>
 <% end %>
 </ol>
 
