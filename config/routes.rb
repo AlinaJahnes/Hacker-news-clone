@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
   get 'users/:id/comments' => 'comments#show_all', as: :show_all
-  post 'article/:id/like' => 'articles#like_count', as: :like_count
+  post 'articles/:id/upvote' => 'votes#upvote_count', as: :upvote_count
 
   root 'articles#index'
   # The priority is based upon order of creation: first created -> highest priority.

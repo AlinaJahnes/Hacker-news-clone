@@ -2,7 +2,7 @@
 
 <ol>
 <% @articles.each do |article| %>
-  <div><li><%= button_to "▲", like_count_path(article), form_class: "like_count", method: :post %>
+  <div><li><%= button_to "▲", upvote_count_path(article), form_class: "like_count", method: :post %>
     <span id="count<%= article.id%>">votes: <%= article.like_count %></span>
 		<%= link_to article.title, article_path(article) %><div>  written by <%= article.user.username%><br><%= article.comments.count%>
 	Comments</div></li></div>
