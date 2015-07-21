@@ -7,13 +7,12 @@
 <% end %>
 </div>
 
-<div>
-  <h3>Comments for this article</h3>
+<h3>Comments for this article</h3>
+<div id = 'comment_area'>
 <% @article.comments.each do |comment| %>
-  <div><p><%= comment.content %></p></div>
-
+  <div class = "comments"><p><%= comment.content %></p></div>
 <% end %>
 </div>
 
-<%= link_to "Add a comment", new_article_comment_path(@article)%>
+<%= button_to "Add a comment",  new_article_comment_path(@article), method: :get, form_class: "comment_form"%>
 

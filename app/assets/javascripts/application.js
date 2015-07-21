@@ -15,7 +15,6 @@
 //= require turbolinks
 //= require_tree .
 $(document).on('ready',function(){
-	var $divID
   $('.like_count').on('submit',function(event){
     event.preventDefault();
     $form_data = $(event.target);
@@ -29,6 +28,33 @@ $(document).on('ready',function(){
       $("#count" + response.id).text("Votes: " + response.number);
     }).fail(function(error){
       console.log(error)
-    })
+    });
+  });
+  $('.comment_form').on('submit',function(event){
+    event.preventDefault();
+    $.ajax({
+      url: $('.comment_form').attr('action')
+    }).done(function(response){
+      console.log(response);
+      $('#comment_area').append(response);
+      $('.comment_form').hide();
+    });
   })
+
+  $('#comment_area').on('submit', $('#new_comment'),function(event){
+    event.preventDefault();
+    var $target = $(event.target);
+    console.log("I'm here");
+    $.ajax({
+      url: $target.attr('action'),
+      method: 'post',
+      data: $target.serialize(),
+      dataType: 'json'
+    }).done(function(response){
+      console.log(response.data)
+      $('#comment_area').prepend("<p>"+response.data+"</p>");
+      $('#new_comment').remove();
+      $('.comment_form').show();
+    });
+  });
 })
