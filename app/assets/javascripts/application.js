@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// JS should go in controller-specific files ie 'votes.js'
 $(document).on('ready',function(){
   $('.like_count').on('submit',function(event){
     event.preventDefault();
@@ -30,15 +32,30 @@ $(document).on('ready',function(){
       console.log(error)
     });
   });
-  $('.comment_form').on('submit',function(event){
+  // I would expect to see a click event here since you're not posting/submitting any data.
+  // $('.comment_form').on('submit',function(event){
+  //   event.preventDefault();
+  //   $.ajax({
+  //     url: $('.comment_form').attr('action')
+  //   }).done(function(response){
+  //     console.log(response);
+      // $('#comment_area').append(response);
+      // $('.comment_form').hide();
+  //   });
+  // })
+  $('.add-comment').on('click', function(event){
     event.preventDefault();
+    console.log($(event.target).attr('href'))
     $.ajax({
-      url: $('.comment_form').attr('action')
+      url: $(event.target).attr('href')
     }).done(function(response){
-      console.log(response);
+      console.log("yay: ", response)
       $('#comment_area').append(response);
       $('.comment_form').hide();
-    });
+    }).fail(function(response){
+      console.log("failed: ", response)
+    })
+
   })
 
   $('#comment_area').on('submit', $('#new_comment'),function(event){

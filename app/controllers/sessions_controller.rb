@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    # You don't need to use instance variables here.
     @user = User.find_by(username: user_params[:username])
     if @user && @user.authenticate(user_params[:password])
       session[:user_id] = @user.id
@@ -15,6 +16,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    # session.delete(:user_id) is another option.
     redirect_to :root, notice: "You have successfully logged out."
   end
 

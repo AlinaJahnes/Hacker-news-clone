@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
+
   def index
+    # What if you had 1,000,000 articles in your db? Use thing like limit, order
     @articles = Article.all.order('created_at')
   end
 
@@ -16,6 +18,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article
     else
+      # Add in some error handling so the user understands what went wrong.
       render :new
     end
   end

@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    # This set up will always display your user information instead of the user you're trying to visit.
     @user = User.find(session[:user_id])
     @articles = @user.articles
   end

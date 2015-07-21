@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   post 'articles/:id/upvote' => 'votes#upvote_count', as: :upvote_count
 
   root 'articles#index'
+
+  # once you're done with this file, delete all these other comments.
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

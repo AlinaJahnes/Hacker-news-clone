@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
 
   def create
     comment = Comment.new(comment_params)
+    # This comment doesn't appear to be associated with an article b/c you don't use the article variable on the next line anywhere else.
     article = Article.find_by(id: params[:article_id])
     if comment.save && request.xhr?
       render json: {data: comment.content}.to_json
