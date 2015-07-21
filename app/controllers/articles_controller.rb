@@ -22,12 +22,19 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find_by_id(params[:id])
+    if request.xhr?
+      render partial: 'form', locals: {article: @article}, layout: false
+    end
   end
 
   def update
     @article = Article.find_by_id(params[:id])
     @article.update(article_params)
+    # if request.xhr?
+    #   render partial: 'form', locals: {article: @article}, layout: false
+    # else
     redirect_to @article
+    # end
   end
 
   def destroy

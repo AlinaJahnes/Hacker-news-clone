@@ -35,7 +35,6 @@ $(document).on('ready',function(){
     $.ajax({
       url: $('.comment_form').attr('action')
     }).done(function(response){
-      console.log(response);
       $('#comment_area').append(response);
       $('.comment_form').hide();
     });
@@ -51,10 +50,32 @@ $(document).on('ready',function(){
       data: $target.serialize(),
       dataType: 'json'
     }).done(function(response){
-      console.log(response.data)
       $('#comment_area').prepend("<p>"+response.data+"</p>");
       $('#new_comment').remove();
       $('.comment_form').show();
     });
   });
+
+  $('#edit_link').on('click', function(event){
+    event.preventDefault();
+    $.ajax({
+      url: $('#edit_link').attr('href')
+    }).done(function(response){
+      $('h3').before(response);
+      $('#edit_link').toggle();
+    });
+  });
+
+  // $('body').on('submit', $('.edit_article'), function(event){
+  //   event.preventDefault();
+  //   $target = $(event.target)
+  //   $.ajax({
+  //     url: $target.attr('action'),
+  //     method: $target.method,
+  //     data: $target.serialize()
+  //   }).done(function(response){
+  //     console.log(response);
+  //   })
+  // })
+
 })
