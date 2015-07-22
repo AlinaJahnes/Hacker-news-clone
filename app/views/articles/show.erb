@@ -1,7 +1,7 @@
 <div><%= @article.title %></div>
 <div><%= @article.body %></div>
 <div>
-<% if current_user.id == @article.user_id%>
+<% if current_user && current_user.id == @article.user_id%>
   <%= link_to "Edit article", edit_article_path(@article), id: "edit_link"%>
   <%= link_to "Delete", @article, method: :delete%>
 <% end %>

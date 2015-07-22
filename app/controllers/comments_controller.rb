@@ -8,8 +8,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = Comment.new(comment_params)
     article = Article.find_by(id: params[:article_id])
+    comment = article.comments.build(comment_params)
     if comment.save && request.xhr?
       render json: {data: comment.content}.to_json
     else
@@ -23,6 +23,6 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:content).merge(user_id: session[:user_id], article_id: params[:article_id])
+    params.require(:comment).permit(:content).merge(user_id: session[:user_id])
   end
 end
