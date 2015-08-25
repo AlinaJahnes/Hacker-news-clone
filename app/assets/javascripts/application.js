@@ -27,7 +27,7 @@ $(document).on('ready',function(){
       if (response.status === true) {
         $('#count' + response.id).text('Votes: ' + response.number);
       } else if (response.status === false) {
-        $('#notice').append('<div>'+response.notice+'</div>')
+        $('#notice').text('').append('<div>'+response.notice+'</div>')
       }
     }).fail(function(error){
       console.log(error)
