@@ -15,10 +15,9 @@
 //= require turbolinks
 //= require_tree .
 $(document).on('ready',function(){
-  $('.like_count').on('submit',function(event){
+  $('.vote_count').on('submit',function(event){
     event.preventDefault();
     $form_data = $(event.target);
-		console.log($(this).children());
     $.ajax({
       url: $form_data.attr('action'),
       method: 'post',
