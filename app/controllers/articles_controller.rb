@@ -35,9 +35,9 @@ class ArticlesController < ApplicationController
     @article.update(article_params)
     if request.xhr?
      	render partial: 'form', locals: {article: @article}, layout: false
-     else
-    redirect_to @article
-     end
+    else
+      redirect_to @article
+    end
   end
 
   def destroy

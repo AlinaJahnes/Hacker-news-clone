@@ -3,7 +3,7 @@
   <div>
     <li>
       <%= form_for @vote, url: votes_path(article), html: {class: 'vote_count'} do |f| %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :user_id, value: current_user ? current_user.id : nil%>
       <%= f.hidden_field :article_id, value: article.id %>
       <%= f.submit "↑" %>
   <% end %>
