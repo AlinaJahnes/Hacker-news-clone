@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :require_login, except: [:index]
+  before_action :require_login, except: [:index, :show]
   before_action :check_privileges, only: [:edit, :update]
   def index
     @articles = Article.all.order('created_at')
@@ -51,7 +51,7 @@ class ArticlesController < ApplicationController
   end
 
   def check_privileges
-    unless current_user.id == Project.find_by(id: params[:id]).creator_id
+    unless current_user.id == Article.find_by(id: params[:id]).user_id
      redirect_to root_path, notice: "not authorized!"
     end
   end
