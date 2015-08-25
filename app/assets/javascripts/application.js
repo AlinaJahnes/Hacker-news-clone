@@ -24,7 +24,11 @@ $(document).on('ready',function(){
       data: $form_data.serialize(),
       dataType: 'json'
     }).done(function(response){
-      $("#count" + response.id).text("Votes: " + response.number);
+      if (response.status === true) {
+        $('#count' + response.id).text('Votes: ' + response.number);
+      } else if (response.status === false) {
+        $('#notice').append('<div>'+response.notice+'</div>')
+      }
     }).fail(function(error){
       console.log(error)
     });
