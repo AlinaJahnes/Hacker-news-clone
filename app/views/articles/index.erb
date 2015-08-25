@@ -10,7 +10,12 @@
       <%= f.submit "↑" %>
   <% end %>
       <span id="count<%= article.id%>">votes: <%= article.votes.count %></span>
-  		<%= link_to article.title, article_path(article) %><div>  written by <%= article.user.username%><br><%= article.comments.count%> Comments</div>
+      <% if article.is_a_link? %>
+        <a href="<%= article.body%>"><%= article.title%></a>
+      <% else %>
+  		  <%= link_to article.title, article_path(article) %>
+      <% end %>
+      <div>  written by <%= article.user.username%><br><%= article.comments.count%> Comments</div>
     </li>
   </div>
 <% end %>
