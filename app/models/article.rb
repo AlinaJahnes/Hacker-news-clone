@@ -9,4 +9,5 @@ class Article < ActiveRecord::Base
   def is_a_link?
     return true if self.body =~ /\A#{URI::regexp(['http', 'https'])}\z/
   end
+
 end

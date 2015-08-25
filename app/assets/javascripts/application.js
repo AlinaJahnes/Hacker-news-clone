@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
 $(document).on('ready page:load page:change',function(){
   $('.vote_count').on('submit',function(event){
     event.preventDefault();

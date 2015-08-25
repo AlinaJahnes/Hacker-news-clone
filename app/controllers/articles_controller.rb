@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :require_login, except: [:index]
+  before_action :check_privileges, only: [:edit, :update]
   def index
     @articles = Article.all.order('created_at')
     @vote = Vote.new
@@ -46,6 +48,12 @@ class ArticlesController < ApplicationController
   private
   def article_params
     params.require(:article).permit(:title, :body).merge(user_id: session[:user_id])
+  end
+
+  def check_privileges
+    unless current_user.id == Project.find_by(id: params[:id]).creator_id
+     redirect_to root_path, notice: "not authorized!"
+    end
   end
 
 end

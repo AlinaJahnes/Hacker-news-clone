@@ -18,7 +18,8 @@ class CommentsController < ApplicationController
   end
 
   def show_all
-    @comments = Comment.where(user_id: session[:user_id])
+    @user = User.find_by(id: params[:id])
+    @comments = Comment.where(user_id: @user.id)
   end
 
   private

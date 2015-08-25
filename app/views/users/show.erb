@@ -1,11 +1,12 @@
-<h2>Hello, <%= @user.username%></h2>
-<p>Here are all your articles</p>
+<h2>User: <%= @user.username%></h2>
+<p>Here are all <%= @user.username%>'s articles</p>
 
 <% @articles.each do |a| %>
   <div><%= link_to a.title, article_path(a) %></div>
 <% end %>
 
-<%= link_to "Create a new article", new_article_path %>
+<% if current_user.id == params[:id] %>
+  <%= link_to "Create a new article", new_article_path %>
+<% end %>
 
-<p>View all the comments you made</p>
-<%= link_to "View all my comments", show_all_path(@user)%>
+<%= link_to "comments", show_all_path(@user)%>

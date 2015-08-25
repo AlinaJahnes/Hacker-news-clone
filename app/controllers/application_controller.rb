@@ -7,4 +7,12 @@ class ApplicationController < ActionController::Base
       @current_user ||= User.find(session[:user_id])
     end
   end
+
+  def require_login 
+    redirect_to root_path, notice: "Login to access page." unless is_authenticated?
+  end
+
+  def is_authenticated?
+    !!session[:user_id]
+  end
 end

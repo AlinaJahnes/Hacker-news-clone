@@ -1,8 +1,11 @@
 <% if @comments.nil? %>
-  <p>You haven't made any comments.</p>
+  <p>No comments by <%= @user.username%>.</p>
 <% else %>
-  <% @comments.each do |comment| %>
-    <div>You commented on <%= comment.article.title%></div>
-    <div>You said <%= comment.content %></div>
-  <% end %>
+  <p><%= @user.username%>'s comments: </p>
+  <ul>
+    <% @comments.each do |comment| %>
+      <li><div>commented on <%= link_to comment.article.title, article_path(comment.article)%></div></li>
+      <div><%= comment.content %></div>
+    <% end %>
+  </ul>
 <% end %>
