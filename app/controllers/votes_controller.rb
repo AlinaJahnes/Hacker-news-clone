@@ -12,7 +12,7 @@ class VotesController < ApplicationController
       format.html {
         redirect_to :root, notice: notice unless status
       }
-      format.json {render json: {status: status, notice: notice, id: article.id, count: article.votes.count}}
+      format.json {render json: {status: status, notice: notice, id: article.id, count: article.votes.count.to_s}}
     end
   end
 

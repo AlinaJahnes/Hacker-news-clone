@@ -8,6 +8,8 @@
 </head>
 <body>
 
+<%= render 'layouts/header' %>
+
 <div id="notice">
   <%= flash[:notice]%>
   <% if flash[:error]%>
@@ -16,7 +18,7 @@
   	<% end %>
   <% end %>
 </div>
-<%= render 'layouts/header' %>
+
 <%= yield %>
 
 </body>

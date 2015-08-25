@@ -1,5 +1,10 @@
 <div><%= @article.title %></div>
-<div><%= @article.body %></div>
+<% if @article.is_a_link? %>
+  <a href="<%= @article.body%>"><%= @article.body%></a>
+<% else %>
+  <div><%= @article.body %></div>
+<% end %>
+
 <div>
 <% if current_user && current_user.id == @article.user_id%>
   <%= link_to "Edit article", edit_article_path(@article), id: "edit_link"%>

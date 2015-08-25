@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$(document).on('ready',function(){
+$(document).on('ready page:load page:change',function(){
   $('.vote_count').on('submit',function(event){
     event.preventDefault();
     $form_data = $(event.target);
@@ -25,7 +25,7 @@ $(document).on('ready',function(){
       dataType: 'json'
     }).done(function(response){
       if (response.status === true) {
-        $('#count' + response.id).text('Votes: ' + response.number);
+        $('#count' + response.id).text('Votes: ' + response.count);
       } else if (response.status === false) {
         $('#notice').text('').append('<div>'+response.notice+'</div>')
       }
