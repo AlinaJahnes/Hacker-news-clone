@@ -11,10 +11,10 @@ class CommentsController < ApplicationController
   def create
     article = Article.find_by(id: params[:article_id])
     comment = article.comments.build(comment_params)
-    # if comment.save && request.xhr?
-    #   render json: {data: comment.content}.to_json
-    if comment.save
-      redirect_to article
+    if comment.save && request.xhr?
+      render json: {data: comment.content}.to_json
+    # if comment.save
+    #   redirect_to article
     else
       redirect_to :root
     end
