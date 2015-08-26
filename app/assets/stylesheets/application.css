@@ -45,3 +45,31 @@ nav .nav_content {
 #article_list {
   margin: 0;
 }
+
+/*.article {
+  float: left;
+}
+*/
+.article_info {
+  padding-left: 1%;
+  padding-bottom: 1%;
+}
+
+.vote_info {
+  width: 5%;
+  float: left;
+}
+
+#container {
+  padding-top: 1%;
+}
+
+
+.comments {
+  border-bottom: 1px solid black;
+}
+
+#show_page_container {
+  margin-left: 2%;
+  margin-right: 2%;
+}

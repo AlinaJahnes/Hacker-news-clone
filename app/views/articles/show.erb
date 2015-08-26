@@ -1,3 +1,4 @@
+<div id="show_page_container">
 <div id="article_container">
   <div><%= @article.title %></div>
   <% if @article.is_a_link? %>
@@ -18,13 +19,13 @@
 <h3>Comments for this article</h3>
 <div id = 'comment_area'>
 <% @article.comments.each do |comment| %>
-  <%= render partial: 'comments/show', locals: {comment: comment} %>
+  <div class="comments"><%= render partial: 'comments/show', locals: {comment: comment} %></div>
 <% end %>
 </div>
 
 <div id="comment_form">
   <%= render partial: 'comments/form', locals: {article: @article, comment: @comment} %>
 </div>
-
+</div>
 
 

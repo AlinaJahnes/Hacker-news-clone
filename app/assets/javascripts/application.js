@@ -16,7 +16,7 @@
 //= require_tree .
 
 $(document).on('ready page:load',function(){
-  $('.vote_count').on('submit',function(event){
+  $('.vote_form').on('submit',function(event){
     event.preventDefault();
     $form_data = $(event.target);
     $.ajax({
