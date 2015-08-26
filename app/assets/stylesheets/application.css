@@ -41,3 +41,7 @@ nav .nav_content {
   margin-top: 0.2em;
   padding-left: 2%;
 }
+
+#article_list {
+  margin: 0;
+}
