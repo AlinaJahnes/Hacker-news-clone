@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :require_login, only: [:new, :create]
+  before_action :require_login, only: [:create]
 
   def create
     article = Article.find_by(id: params[:article_id])
@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
       if comment.save
         format.html {render partial: 'comments/show', locals: {comment: comment}, layout: false}
       else
-        format.html {redirect_to :back}
+        format.html {redirect_to :back, notice: "Fail to save comment. Please try again."}
       end
     end
   end
@@ -20,6 +20,6 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:content, :article_id).merge(user_id: session[:user_id])
+    params.require(:comment).permit(:content, :article_id).merge(user_id: current_user.id)
   end
 end

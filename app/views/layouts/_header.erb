@@ -1,7 +1,7 @@
 <h3>Hacker News</h3>
 <%= link_to "Home", root_path %>
 <% if current_user %>
-  <%= @current_user.username%>
+  <%= current_user.username%>
   <%= link_to "Profile", user_path(session[:user_id]) %>
   <%= link_to "Logout", logout_path %>
 <% else %>
