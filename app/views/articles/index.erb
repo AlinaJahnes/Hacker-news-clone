@@ -1,0 +1,26 @@
+<ol id="article_list">
+<% @articles.each do |article| %>
+    <li class="list">
+    <div>
+      <div class="article vote_info">
+        <%= form_for @vote, url: votes_path(article), html: {class: 'vote_form'} do |f| %>
+          <%= f.hidden_field :user_id, value: current_user ? current_user.id : nil%>
+          <%= f.hidden_field :article_id, value: article.id %>
+          <%= f.submit "↑" %>
+        <% end %>        
+      </div>
+
+      <div class="article article_info">
+        <% if article.is_a_link? %>
+          <a href="<%= article.body%>"><%= article.title%></a>
+        <% else %>
+    		  <%= link_to article.title, article_path(article) %>
+        <% end %>
+        <div><span id="count<%= article.id%>"><%= article.votes.count %> points</span> | Posted by <%= link_to article.user.username, user_path(article.user) %> | <%= article.comments.count%> Comments</div>
+      </div>
+    </div>
+    </li>
+
+<% end %>
+</ol>
+
