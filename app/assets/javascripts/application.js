@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).on('ready page:load page:change',function(){
+$(document).on('ready page:load',function(){
   $('.vote_count').on('submit',function(event){
     event.preventDefault();
     $form_data = $(event.target);
@@ -34,17 +34,17 @@ $(document).on('ready page:load page:change',function(){
       console.log(error)
     });
   });
-  $('.comment_form').on('submit',function(event){
-    event.preventDefault();
-    $.ajax({
-      url: $('.comment_form').attr('action')
-    }).done(function(response){
-      $('#comment_area').append(response);
-      $('.comment_form').hide();
-    });
-  })
+  // $('.comment_form').on('submit',function(event){
+  //   event.preventDefault();
+  //   $.ajax({
+  //     url: $('.comment_form').attr('action')
+  //   }).done(function(response){
+  //     $('#comment_area').append(response);
+  //     $('.comment_form').hide();
+  //   });
+  // })
 
-  $('#comment_area').on('submit', $('#new_comment'),function(event){
+  $('#comment_area').on('submit',function(event){
     event.preventDefault();
     var $target = $(event.target);
     console.log("I'm here");
@@ -81,5 +81,9 @@ $(document).on('ready page:load page:change',function(){
   //     console.log(response);
   //   })
   // })
+  $('#new_comment_button').on('click', function(event) {
+    event.preventDefault();
+    $('#new_comment').toggle();
+  });
 
 })

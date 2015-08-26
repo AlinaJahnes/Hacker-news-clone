@@ -19,5 +19,7 @@
 <% end %>
 </div>
 
-<%= button_to "Add a comment",  new_article_comment_path(@article), method: :get, form_class: "comment_form"%>
+<%= render partial: 'comments/form', locals: {article: @article, comment: @comment} %>
+<%= link_to "Comment on this!", new_article_comment_path(@article, @comment), id: :new_comment_button %>
+
 
