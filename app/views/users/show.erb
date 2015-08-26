@@ -5,7 +5,8 @@
   <div><%= link_to a.title, article_path(a) %></div>
 <% end %>
 
-<% if current_user.id == params[:id] %>
+
+<% if current_user.id == params[:id].to_i %>
   <%= link_to "Create a new article", new_article_path %>
 <% end %>
 

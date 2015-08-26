@@ -26,8 +26,8 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find_by_id(params[:id])
-    if request.xhr?
-      render partial: 'form', locals: {article: @article}, layout: false
+    respond_to do |format|
+      format.html {render partial: 'form', locals: {article: @article}, layout: false}
     end
   end
 

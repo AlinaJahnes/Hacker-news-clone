@@ -54,8 +54,10 @@ $(document).on('ready page:load',function(){
     $.ajax({
       url: $('#edit_link').attr('href')
     }).done(function(response){
-      $('h3').before(response);
+      console.log(response)
+      $('#article_edit_container').append(response);
       $('#edit_link').toggle();
+      $('#article_container').toggle();
     });
   });
 
