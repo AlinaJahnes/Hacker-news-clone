@@ -41,11 +41,10 @@ $(document).on('ready page:load',function(){
     $.ajax({
       url: $target.attr('action'),
       method: 'post',
-      data: $target.serialize(),
-      dataType: 'json'
+      data: $target.serialize()
     }).done(function(response){
       console.log(response)
-      $('#comment_area').prepend("<p>"+response.data+"</p>");
+      $('#comment_area').prepend(response);
       $('#comment_content').val('')
     });
   });

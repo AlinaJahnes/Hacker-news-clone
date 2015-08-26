@@ -4,10 +4,12 @@ class CommentsController < ApplicationController
   def create
     article = Article.find_by(id: params[:article_id])
     comment = article.comments.build(comment_params)
-    if comment.save && request.xhr?
-      render json: {data: comment.content}.to_json
-    else
-      redirect_to :root
+    respond_to do |format|
+      if comment.save
+        format.html {render partial: 'comments/show', locals: {comment: comment}, layout: false}
+      else
+        format.html {redirect_to :back}
+      end
     end
   end
 

@@ -15,15 +15,13 @@
 <h3>Comments for this article</h3>
 <div id = 'comment_area'>
 <% @article.comments.each do |comment| %>
-  <div class = "comments">
-    <p><%= comment.content %></p>
-    <p>by <%= comment.user.username%></p>
-    <p>created: <%= time_ago_in_words(comment.created_at)%> ago</p>
-  </div>
+  <%= render partial: 'comments/show', locals: {comment: comment} %>
 <% end %>
 </div>
 
-<%= render partial: 'comments/form', locals: {article: @article, comment: @comment} %>
+<div id="comment_form">
+  <%= render partial: 'comments/form', locals: {article: @article, comment: @comment} %>
+</div>
 
 
 
