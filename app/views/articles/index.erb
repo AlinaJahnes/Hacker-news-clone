@@ -16,7 +16,7 @@
         <% else %>
     		  <%= link_to article.title, article_path(article) %>
         <% end %>
-        <div><span id="count<%= article.id%>"><%= article.votes.count %> points</span> | Posted by <%= link_to article.user.username, user_path(article.user) %> | <%= article.comments.count%> Comments</div>
+        <div class="info"><span id="count<%= article.id%>"><%= article.votes.count %> points</span> | Posted by <%= link_to article.user.username, user_path(article.user) %> | <%= article.comments.count%> Comments</div>
       </div>
     </div>
     </li>
