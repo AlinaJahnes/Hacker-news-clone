@@ -28,7 +28,7 @@ nav {
   padding: 0;
 }
 
-nav a:link {
+a:link {
   color: black;
   text-decoration: none;
 }
@@ -76,7 +76,7 @@ nav .nav_content {
   margin-right: 2%;
 }
 
-.comment_info {
+.info {
   font-size: 0.7em;
   color: #6B6B47;
 }
