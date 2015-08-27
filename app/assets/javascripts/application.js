@@ -44,7 +44,7 @@ $(document).on('ready page:load',function(){
       data: $target.serialize()
     }).done(function(response){
       console.log(response)
-      $('#comment_area').prepend(response);
+      $('.comments').prepend(response);
       $('#comment_content').val('')
     });
   });
