@@ -1,5 +1,2 @@
-<div class = "comments">
-    <p><%= comment.content %></p>
-    <p>by <%= comment.user.username%></p>
-    <p>created: <%= time_ago_in_words(comment.created_at)%> ago</p>
-</div>
+<p><%= comment.content %></p>
+<p class="comment_info">by <%= comment.user.username%> | created: <%= time_ago_in_words(comment.created_at)%> ago</p>

@@ -73,3 +73,8 @@ nav .nav_content {
   margin-left: 2%;
   margin-right: 2%;
 }
+
+.comment_info {
+  font-size: 0.7em;
+  color: #6B6B47;
+}
