@@ -1,6 +1,6 @@
 <div id="show_page_container">
   <div id="article_container">
-    <div><%= @article.title %></div>
+    <div id="article_title"><%= @article.title %></div>
     <% if @article.is_a_link? %>
       <a href="<%= @article.body%>"><%= @article.body%></a>
     <% else %>
@@ -17,9 +17,11 @@
 
     <div id = 'comment_area'>
       <h3>Comments for this article</h3>
-      <% @article.comments.each do |comment| %>
-        <div class="comments"><%= render partial: 'comments/show', locals: {comment: comment} %></div>
-      <% end %>
+      <div class="comments">
+        <% @article.comments.each do |comment| %>
+          <div class="comment_content"><%= render partial: 'comments/show', locals: {comment: comment} %></div>
+        <% end %>
+      </div>
     </div>
 
     <div id="comment_form">
