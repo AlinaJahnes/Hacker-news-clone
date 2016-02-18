@@ -1,5 +1,5 @@
-<ol id="article_list">
-  <% if @articles%>
+<% if !@articles.empty? %>
+  <ol id="article_list">
     <% @articles.each do |article| %>
       <li class="list">
         <div>
@@ -21,8 +21,7 @@
         </div>
       </li>
     <% end %>
-  <% else %>
-    <p>No one has posted yet!</p>
-  <% end %>
-</ol>
-
+  </ol>
+<% else %>
+  <p>No one has posted yet!</p>
+<% end %>
